@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulario</title>
+</head>
+<body>
+    <div class="pre-loader">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+    <div id='app'>
+        <div class="container">
+            <div class="card">
+                <form id="form" action="">
+                    <h2>Formulario de contacto</h2>
+                    <div class="form-control">
+                        <label class="label" for="Correo">Correo</label>
+                        <input type="text" id="correo" name="correo" autocomplete="off">
+                    </div>
+                    <div class="form-control">
+                        <label for="titulo">Titulo</label>
+                        <input type="text" id="titulo" name="titulo" autocomplete="off">
+                    </div>
+                    <div class="form-control">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea name="mesaje" id="mensaje"></textarea>
+                    </div>
+                    <div class="form-control">
+                        <button class="btn-enviar" id="btn-enviar">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
