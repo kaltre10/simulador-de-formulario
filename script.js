@@ -9,11 +9,13 @@ window.addEventListener('load', () => {
     let titulo = document.getElementById('titulo');
     let mensaje = document.getElementById('mensaje');
     let form = document.getElementById('form');
+    let btnEnviar = document.getElementById('btn-enviar');
 
     correo.addEventListener('blur', validarFormulario);
     titulo.addEventListener('blur', validarFormulario);
     mensaje.addEventListener('blur', validarFormulario);
     form.addEventListener('submit', enviandoForm);
+    btnEnviar.disable = false;
 
 });
 
@@ -67,21 +69,26 @@ function removeInputError(etiqueta){
 
 function enviandoForm(e){
     e.preventDefault();
-    
     let btnEnviar = document.getElementById('btn-enviar');
-    btnEnviar.style.cursor = 'no-alloweb';
-    btnEnviar.textContent = '';
-    let divLoader = document.createElement('div');
-    let div = document.createElement('div');
-    divLoader.setAttribute('class', 'lds-ripple-btn');
-    divLoader.appendChild(div);
-    divLoader.appendChild(div);
-    btnEnviar.appendChild(divLoader);
-    setTimeout(() => {
-        btnEnviar.removeChild(btnEnviar.children[0])
-        btnEnviar.textContent = 'Enviar';
-        form.reset();
-    }, 3000)
+    if(btnEnviar.disable){
+        btnEnviar.style.cursor = 'no-alloweb';
+        btnEnviar.textContent = '';
+        let divLoader = document.createElement('div');
+        let div = document.createElement('div');
+        divLoader.setAttribute('class', 'lds-ripple-btn');
+        divLoader.appendChild(div);
+        divLoader.appendChild(div);
+        btnEnviar.appendChild(divLoader);
+        setTimeout(() => {
+            btnEnviar.removeChild(btnEnviar.children[0])
+            btnEnviar.textContent = 'Enviar';
+            btnEnviar.disable = false;
+            btnEnviar.style.backgroundColor = 'rgba(148, 149, 150, 0.3)';
+            btnEnviar.style.color = 'white';
+            btnEnviar.style.cursor = 'no-alloweb';
+            form.reset();
+        }, 3000);
+    }
     
     
 
@@ -94,10 +101,12 @@ function verificarForm(){
         btnEnviar.style.backgroundColor = 'rgba(116, 185, 255, .3)';
         btnEnviar.style.color = '#0984e3';
         btnEnviar.style.cursor = 'pointer';
+        btnEnviar.disable = true;
     }else{
         btnEnviar.style.backgroundColor = 'rgba(148, 149, 150, 0.3)';
         btnEnviar.style.color = 'white';
         btnEnviar.style.cursor = 'no-allowed';
+        btnEnviar.disable = false;
     }
     
 }
